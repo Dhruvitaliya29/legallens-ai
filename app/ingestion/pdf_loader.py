@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import fitz
+import pymupdf
 
 from app.ingestion.models import DocumentContent, PageContent
 
@@ -17,7 +17,7 @@ class PDFLoader:
         if path.suffix.lower() != ".pdf":
             raise ValueError("Input file must be a PDF.")
 
-        document = fitz.open(path)
+        document = pymupdf.open(path)
 
         pages: list[PageContent] = []
 
